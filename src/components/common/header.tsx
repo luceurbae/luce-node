@@ -14,6 +14,15 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace(/.*#/, "");
+    const elem = document.getElementById(targetId);
+    elem?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
@@ -29,6 +38,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="text-foreground/60 transition-colors hover:text-foreground/80"
               >
                 {link.label}
@@ -61,7 +71,10 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => {
+                      handleScroll(e, link.href);
+                      setIsOpen(false);
+                    }}
                     className="text-foreground/80 transition-colors hover:text-foreground"
                   >
                     {link.label}
@@ -72,10 +85,10 @@ export default function Header() {
           </Sheet>
           <div className="hidden md:flex items-center space-x-2">
              <Button asChild variant="ghost">
-                <Link href="#contact">Get a Quote</Link>
+                <Link href="#contact" onClick={(e) => handleScroll(e, '#contact')}>Get a Quote</Link>
             </Button>
             <Button asChild>
-                <Link href="#contact">Get Started</Link>
+                <Link href="#contact" onClick={(e) => handleScroll(e, '#contact')}>Get Started</Link>
             </Button>
           </div>
         </div>
