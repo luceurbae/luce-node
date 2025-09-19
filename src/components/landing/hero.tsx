@@ -8,12 +8,39 @@ import { gsap } from 'gsap';
 
 export default function Hero() {
   const heroRef = useRef(null);
+  const getStartedBtnRef = useRef(null);
+  const ourServicesBtnRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     tl.fromTo('.hero-title', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
     tl.fromTo('.hero-description', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, '-=0.7');
     tl.fromTo('.hero-buttons', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.7');
+
+    // Get Started Button Animation
+    if (getStartedBtnRef.current) {
+      const getStartedBtn = getStartedBtnRef.current;
+      const arrow = getStartedBtn.querySelector('.arrow-icon');
+      
+      const hoverTl = gsap.timeline({ paused: true });
+      hoverTl.to(arrow, { x: 5, duration: 0.3, ease: 'power2.inOut' });
+
+      getStartedBtn.addEventListener('mouseenter', () => hoverTl.play());
+      getStartedBtn.addEventListener('mouseleave', () => hoverTl.reverse());
+    }
+
+    // Our Services Button Animation
+    if (ourServicesBtnRef.current) {
+      const ourServicesBtn = ourServicesBtnRef.current;
+      
+      ourServicesBtn.addEventListener('mouseenter', () => {
+        gsap.to(ourServicesBtn, { y: -3, duration: 0.3, ease: 'power2.out' });
+      });
+      ourServicesBtn.addEventListener('mouseleave', () => {
+        gsap.to(ourServicesBtn, { y: 0, duration: 0.3, ease: 'power2.out' });
+      });
+    }
+
   }, []);
 
   return (
@@ -33,12 +60,12 @@ export default function Hero() {
           Secure, reliable, and high-performance validation services for the world's leading decentralized networks. Focus on your project, we'll handle the nodes.
         </p>
         <div className="mt-8 flex justify-center gap-4 hero-buttons">
-          <Button asChild size="lg">
+          <Button asChild size="lg" ref={getStartedBtnRef}>
             <Link href="#contact">
-              Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              Get Started <ArrowRight className="ml-2 h-4 w-4 arrow-icon" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline">
+          <Button asChild size="lg" variant="outline" ref={ourServicesBtnRef}>
             <Link href="#services">Our Services</Link>
           </Button>
         </div>
