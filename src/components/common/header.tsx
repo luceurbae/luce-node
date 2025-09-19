@@ -8,7 +8,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navLinks = [
   { href: '#services', label: 'Services' },
-  { href: '#dashboard', label: 'Dashboard' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -22,7 +21,7 @@ export default function Header() {
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <ShieldCheck className="h-6 w-6 text-primary" />
             <span className="font-bold font-headline sm:inline-block">
-              NodeGuardian
+              Luce Node
             </span>
           </Link>
           <nav className="hidden gap-6 text-sm md:flex">
@@ -55,7 +54,7 @@ export default function Header() {
                 onClick={() => setIsOpen(false)}
               >
                 <ShieldCheck className="mr-2 h-6 w-6 text-primary" />
-                <span className="font-bold font-headline">NodeGuardian</span>
+                <span className="font-bold font-headline">Luce Node</span>
               </Link>
               <div className="flex flex-col space-y-3">
                 {navLinks.map((link) => (

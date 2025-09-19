@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'NodeGuardian',
+  title: 'Luce Node',
   description: 'Reliable and secure node validation services for decentralized networks.',
 };
 
