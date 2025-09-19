@@ -1,87 +1,86 @@
 "use client"
 
-import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useState } from 'react';
+import Link from 'next/link';
+import { Menu, ShieldCheck, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
-const testimonials = [
-  {
-    quote: "NodeGuardian's reliability is unmatched. We've had zero downtime since switching, which is critical for our staking operations.",
-    name: 'Alex Johnson',
-    title: 'CTO, DeFi Innovators',
-    avatar: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageUrl,
-    imageHint: PlaceHolderImages.find(p => p.id === 'testimonial-1')?.imageHint,
-  },
-  {
-    quote: "The performance and low latency of their nodes have given us a competitive edge. Their support team is also incredibly responsive and knowledgeable.",
-    name: 'Samantha Lee',
-    title: 'Lead Protocol Engineer, ChainCore',
-    avatar: PlaceHolderImages.find(p => p.id === 'testimonial-2')?.imageUrl,
-    imageHint: PlaceHolderImages.find(p => p.id === 'testimonial-2')?.imageHint,
-  },
-  {
-    quote: "As a developer, I appreciate the easy integration and clear documentation. NodeGuardian makes running infrastructure a breeze.",
-    name: 'David Chen',
-    title: 'Founder, NFT Marketplace XYZ',
-    avatar: PlaceHolderImages.find(p => p.id === 'testimonial-3')?.imageUrl,
-    imageHint: PlaceHolderImages.find(p => p.id === 'testimonial-3')?.imageHint,
-  },
+const navLinks = [
+  { href: '#services', label: 'Services' },
+  { href: '#dashboard', label: 'Dashboard' },
+  { href: '#contact', label: 'Contact' },
 ];
 
-export default function Testimonials() {
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <section id="testimonials" className="py-16 sm:py-24 bg-secondary">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Trusted by the Best
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Hear what our partners have to say about our validation services.
-          </p>
-        </div>
-        <Carousel
-          opts={{
-            align: 'start',
-            loop: true,
-          }}
-          className="w-full max-w-4xl mx-auto mt-12"
-        >
-          <CarouselContent>
-            {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
-                <div className="p-1">
-                  <Card className="h-full">
-                    <CardContent className="flex flex-col items-start justify-between p-6 h-full">
-                      <p className="text-muted-foreground italic">"{testimonial.quote}"</p>
-                      <div className="mt-4 flex items-center">
-                        <Avatar className="h-10 w-10">
-                           {testimonial.avatar && <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />}
-                           <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                        </Avatar>
-                        <div className="ml-4">
-                          <p className="font-semibold">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 max-w-screen-2xl items-center">
+        <div className="mr-4 flex">
+          <Link href="/" className="mr-6 flex items-center space-x-2">
+            <ShieldCheck className="h-6 w-6 text-primary" />
+            <span className="font-bold font-headline sm:inline-block">
+              NodeGuardian
+            </span>
+          </Link>
+          <nav className="hidden gap-6 text-sm md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-foreground/60 transition-colors hover:text-foreground/80"
+              >
+                {link.label}
+              </Link>
             ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+          </nav>
+        </div>
+        <div className="flex flex-1 items-center justify-end">
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle Menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="pr-0">
+              <Link
+                href="/"
+                className="mb-4 flex items-center"
+                onClick={() => setIsOpen(false)}
+              >
+                <ShieldCheck className="mr-2 h-6 w-6 text-primary" />
+                <span className="font-bold font-headline">NodeGuardian</span>
+              </Link>
+              <div className="flex flex-col space-y-3">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-foreground/80 transition-colors hover:text-foreground"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
+          <div className="hidden md:flex items-center space-x-2">
+             <Button asChild variant="ghost">
+                <Link href="#contact">Get a Quote</Link>
+            </Button>
+            <Button asChild>
+                <Link href="#contact">Get Started</Link>
+            </Button>
+          </div>
+        </div>
       </div>
-    </section>
+    </header>
   );
 }
