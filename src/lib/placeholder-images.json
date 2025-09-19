@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "testimonial-1",
+      "description": "Avatar of a satisfied client",
+      "imageUrl": "https://picsum.photos/seed/101/100/100",
+      "imageHint": "person face"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Avatar of a happy customer",
+      "imageUrl": "https://picsum.photos/seed/102/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "Avatar of a tech lead",
+      "imageUrl": "https://picsum.photos/seed/103/100/100",
+      "imageHint": "woman smiling"
+    }
+  ]
 }
