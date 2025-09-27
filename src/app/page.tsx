@@ -6,7 +6,7 @@ import Hero from '@/components/landing/hero-dynamic';
 
 const ServiceShowcase = dynamic(() => import('@/components/landing/service-showcase'), {
   loading: () => <div className="h-[500px] w-full flex items-center justify-center"><Skeleton className="h-4/5 w-4/5" /></div>,
-});
+}); 
 
 const RunningServices = dynamic(() => import('@/components/landing/running-services'), {
     loading: () => <div className="h-[500px] w-full flex items-center justify-center"><Skeleton className="h-4/5 w-4/5" /></div>,

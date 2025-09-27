@@ -57,7 +57,7 @@ export default function Hero() {
           Rock-Solid Node Validation
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground hero-description">
-          Secure, reliable, and high-performance validation services for the world's leading decentralized networks. Focus on your project, we'll handle the nodes.
+          Secure, reliable, and high-performance validation services for the world's leading decentralized networks. As an independent node runner, we focus on your project, so you can handle the nodes.
         </p>
         <div className="mt-8 flex justify-center gap-4 hero-buttons">
           <Button asChild size="lg" ref={getStartedBtnRef}>
