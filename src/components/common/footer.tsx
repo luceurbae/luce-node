@@ -1,5 +1,6 @@
-import { ShieldCheck, Twitter, Github, Linkedin } from 'lucide-react';
+import { Twitter, Github, Linkedin } from 'lucide-react';
 import Link from 'next/link';
+import Logo from './logo';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -9,7 +10,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="flex items-center mb-4 md:mb-0">
-            <ShieldCheck className="h-8 w-8 text-primary" />
+            <Logo className="h-8 w-8 text-primary" />
             <span className="ml-2 text-xl font-bold font-headline">Luce Node</span>
           </div>
           <div className="text-center text-sm text-muted-foreground md:text-left">

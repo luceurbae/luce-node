@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, ShieldCheck, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import Logo from './logo';
 
 const navLinks = [
   { href: '#services', label: 'Services' },
@@ -29,7 +30,7 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <ShieldCheck className="h-6 w-6 text-primary" />
+            <Logo className="h-6 w-6 text-primary" />
             <span className="font-bold font-headline sm:inline-block">
               Luce Node
             </span>
@@ -64,7 +65,7 @@ export default function Header() {
                 className="mb-4 flex items-center"
                 onClick={() => setIsOpen(false)}
               >
-                <ShieldCheck className="mr-2 h-6 w-6 text-primary" />
+                <Logo className="mr-2 h-6 w-6 text-primary" />
                 <span className="font-bold font-headline">Luce Node</span>
               </Link>
               <div className="flex flex-col space-y-3">
