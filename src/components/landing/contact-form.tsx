@@ -4,23 +4,17 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useState, useTransition } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { contactFormAICompletion } from '@/ai/flows/contact-form-ai-completion';
 import { useToast } from '@/hooks/use-toast';
-import { Checkbox } from '../ui/checkbox';
-import { Badge } from '../ui/badge';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
-  services: z.array(z.string()).optional(),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -36,8 +30,6 @@ function SubmitButton() {
 
 export default function ContactForm() {
   const { toast } = useToast();
-  const [aiSuggestions, setAiSuggestions] = useState<string[]>([]);
-  const [isAiThinking, setIsAiThinking] = useTransition();
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -45,30 +37,8 @@ export default function ContactForm() {
       name: '',
       email: '',
       message: '',
-      services: [],
     },
   });
-
-  const messageValue = form.watch('message');
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      if (messageValue && messageValue.length > 20) {
-        setIsAiThinking(async () => {
-          const result = await contactFormAICompletion({ message: messageValue });
-          if (result && result.suggestedServices) {
-            setAiSuggestions(result.suggestedServices);
-          }
-        });
-      } else {
-        setAiSuggestions([]);
-      }
-    }, 1000); // 1-second debounce
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [messageValue]);
 
   async function onSubmit(data: FormSchema) {
     // This would be a server action call in a real app
@@ -78,7 +48,6 @@ export default function ContactForm() {
       description: "Thanks for reaching out. We'll get back to you shortly.",
     });
     form.reset();
-    setAiSuggestions([]);
   }
 
   return (
@@ -95,7 +64,7 @@ export default function ContactForm() {
         <Card className="max-w-2xl mx-auto mt-12">
           <CardHeader>
             <CardTitle className="font-headline">Contact Us</CardTitle>
-            <CardDescription>Our AI assistant will help suggest services based on your message.</CardDescription>
+            <CardDescription>Fill out the form below and we'll get back to you.</CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -139,59 +108,6 @@ export default function ContactForm() {
                     </FormItem>
                   )}
                 />
-
-                { (isAiThinking || aiSuggestions.length > 0) && (
-                  <FormField
-                    control={form.control}
-                    name="services"
-                    render={() => (
-                      <FormItem>
-                        <div className="mb-4">
-                            <FormLabel className="text-base">
-                                Interested Services {isAiThinking && <span className="text-sm text-muted-foreground">(AI is thinking...)</span>}
-                            </FormLabel>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                        {aiSuggestions.map((item) => (
-                          <FormField
-                            key={item}
-                            control={form.control}
-                            name="services"
-                            render={({ field }) => {
-                              return (
-                                <FormItem
-                                  key={item}
-                                  className="flex flex-row items-start space-x-3 space-y-0"
-                                >
-                                  <FormControl>
-                                    <Checkbox
-                                      checked={field.value?.includes(item)}
-                                      onCheckedChange={(checked) => {
-                                        return checked
-                                          ? field.onChange([...(field.value || []), item])
-                                          : field.onChange(
-                                              field.value?.filter(
-                                                (value) => value !== item
-                                              )
-                                            )
-                                      }}
-                                    />
-                                  </FormControl>
-                                  <FormLabel className="font-normal">
-                                    {item}
-                                  </FormLabel>
-                                </FormItem>
-                              )
-                            }}
-                          />
-                        ))}
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                )}
-
                 <SubmitButton />
               </form>
             </Form>
