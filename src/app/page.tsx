@@ -3,6 +3,8 @@ import Footer from '@/components/common/footer';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 import Hero from '@/components/landing/hero-dynamic';
+import { getServices } from '@/lib/notion';
+import type { Service } from '@/components/landing/running-services';
 
 const RunningServices = dynamic(() => import('@/components/landing/running-services'), {
     loading: () => <div className="h-[500px] w-full flex items-center justify-center"><Skeleton className="h-4/5 w-4/5" /></div>,
@@ -17,13 +19,16 @@ const ContactForm = dynamic(() => import('@/components/landing/contact-form'), {
 });
 
 
-export default function Home() {
+export default async function Home() {
+
+  const services: Service[] = await getServices();
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
         <Hero />
-        <RunningServices />
+        <RunningServices services={services} />
         <Team />
         <ContactForm />
       </main>
