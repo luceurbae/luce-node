@@ -1,54 +1,18 @@
+
 "use client";
 
-import { useFormState, useFormStatus } from 'react-dom';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useToast } from '@/hooks/use-toast';
-
-const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
-});
-
-type FormSchema = z.infer<typeof formSchema>;
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending} className="w-full">
-      {pending ? 'Sending...' : 'Send Message'}
-    </Button>
-  );
-}
 
 export default function ContactForm() {
-  const { toast } = useToast();
 
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      message: '',
-    },
-  });
-
-  async function onSubmit(data: FormSchema) {
-    // This would be a server action call in a real app
-    console.log('Form submitted:', data);
-    toast({
-      title: 'Message Sent!',
-      description: "Thanks for reaching out. We'll get back to you shortly.",
-    });
-    form.reset();
-  }
+  const handleEmailClick = () => {
+    const name = (document.getElementById('name') as HTMLInputElement)?.value || 'No name provided';
+    const message = (document.getElementById('message') as HTMLTextAreaElement)?.value || 'No message provided';
+    const subject = `Message from ${name} via Luce Node Website`;
+    const body = `Name: ${name}\n\nMessage:\n${message}`;
+    window.location.href = `mailto:izaann25@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <section id="contact" className="py-16 sm:py-24">
@@ -67,50 +31,23 @@ export default function ContactForm() {
             <CardDescription>Fill out the form below and we'll get back to you.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Full Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="John Doe" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email Address</FormLabel>
-                      <FormControl>
-                        <Input placeholder="you@example.com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Your Message</FormLabel>
-                      <FormControl>
-                        <Textarea placeholder="Tell us how we can help..." className="min-h-[120px]" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <SubmitButton />
-              </form>
-            </Form>
+            <div className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground">Full Name</label>
+                  <input id="name" type="text" placeholder="John Doe" className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-1" />
+                </div>
+                <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground">Email Address</label>
+                    <input id="email" type="email" placeholder="you@example.com" className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-1" />
+                </div>
+                <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-foreground">Your Message</label>
+                    <textarea id="message" placeholder="Tell us how we can help..." className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-1"></textarea>
+                </div>
+                <Button onClick={handleEmailClick} className="w-full">
+                    Send Message
+                </Button>
+            </div>
           </CardContent>
         </Card>
       </div>
