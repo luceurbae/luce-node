@@ -15,9 +15,9 @@ export const getServices = async () => {
 
         const services = response.results.map((page) => {
             if ('properties' in page) {
-                const titleProp = page.properties.Title;
-                const descriptionProp = page.properties.Description;
-                const linkProp = page.properties.Link;
+                const titleProp = page.properties.title;
+                const descriptionProp = page.properties.description;
+                const linkProp = page.properties.url;
 
                 const title = titleProp?.type === 'title' ? titleProp.title[0]?.plain_text : '';
                 const description = descriptionProp?.type === 'rich_text' ? descriptionProp.rich_text[0]?.plain_text : '';
