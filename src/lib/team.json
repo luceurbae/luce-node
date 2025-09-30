@@ -2,10 +2,10 @@
 {
     "team": [
       {
-        "name": "Rama",
+        "name": "Zaluce",
         "role": "Founder",
-        "description": "Founded this DAO by chance, fueled by a passion for software engineering, Web3 innovation, and community building.",
-        "imageId": "team-rama",
+        "description": "Front-end & Node Engineww ><. JavaScript Addcit.",
+        "imageId": "team-zaluce",
         "socials": {
           "twitter": "#",
           "telegram": "#",
@@ -13,45 +13,15 @@
         }
       },
       {
-        "name": "Dot",
+        "name": "Djeju",
         "role": "Co-Founder",
-        "description": "A dedicated startup enthusiast and entrepreneur with a background in project management within the tech industry.",
-        "imageId": "team-dot",
+        "description": "Professional network node & tester. Bot engineww",
+        "imageId": "team-djeju",
         "socials": {
           "twitter": "#",
           "linkedin": "#"
         }
       },
-      {
-        "name": "Alif",
-        "role": "Partnership Manager",
-        "description": "Building connections in the web3 world is fun for me and I love exploring new things.",
-        "imageId": "team-alif",
-        "socials": {
-            "twitter": "#",
-            "telegram": "#"
-        }
-      },
-      {
-        "name": "Alvi",
-        "role": "Technical Lead",
-        "description": "Curates and shares content on crypto airdrops, keeping the community informed. Drives engagement.",
-        "imageId": "team-alvi",
-        "socials": {
-            "twitter": "#",
-            "linkedin": "#"
-        }
-      },
-      {
-        "name": "Aprame",
-        "role": "Alpha Seeker",
-        "description": "An ardent researcher and web3 enthusiasts.",
-        "imageId": "team-aprame",
-        "socials": {
-            "twitter": "#",
-            "telegram": "#"
-        }
-      }
     ]
   }
   
