@@ -1,0 +1,57 @@
+
+{
+    "team": [
+      {
+        "name": "Rama",
+        "role": "Founder",
+        "description": "Founded this DAO by chance, fueled by a passion for software engineering, Web3 innovation, and community building.",
+        "imageId": "team-rama",
+        "socials": {
+          "twitter": "#",
+          "telegram": "#",
+          "website": "#"
+        }
+      },
+      {
+        "name": "Dot",
+        "role": "Co-Founder",
+        "description": "A dedicated startup enthusiast and entrepreneur with a background in project management within the tech industry.",
+        "imageId": "team-dot",
+        "socials": {
+          "twitter": "#",
+          "linkedin": "#"
+        }
+      },
+      {
+        "name": "Alif",
+        "role": "Partnership Manager",
+        "description": "Building connections in the web3 world is fun for me and I love exploring new things.",
+        "imageId": "team-alif",
+        "socials": {
+            "twitter": "#",
+            "telegram": "#"
+        }
+      },
+      {
+        "name": "Alvi",
+        "role": "Technical Lead",
+        "description": "Curates and shares content on crypto airdrops, keeping the community informed. Drives engagement.",
+        "imageId": "team-alvi",
+        "socials": {
+            "twitter": "#",
+            "linkedin": "#"
+        }
+      },
+      {
+        "name": "Aprame",
+        "role": "Alpha Seeker",
+        "description": "An ardent researcher and web3 enthusiasts.",
+        "imageId": "team-aprame",
+        "socials": {
+            "twitter": "#",
+            "telegram": "#"
+        }
+      }
+    ]
+  }
+  

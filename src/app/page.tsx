@@ -8,6 +8,10 @@ const RunningServices = dynamic(() => import('@/components/landing/running-servi
     loading: () => <div className="h-[500px] w-full flex items-center justify-center"><Skeleton className="h-4/5 w-4/5" /></div>,
 });
 
+const Team = dynamic(() => import('@/components/landing/team'), {
+  loading: () => <div className="h-[600px] w-full flex items-center justify-center"><Skeleton className="h-4/5 w-4/5" /></div>,
+});
+
 const ContactForm = dynamic(() => import('@/components/landing/contact-form'), {
   loading: () => <div className="h-[500px] w-full flex items-center justify-center"><Skeleton className="h-4/5 w-4/5" /></div>,
 });
@@ -20,6 +24,7 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <RunningServices />
+        <Team />
         <ContactForm />
       </main>
       <Footer />

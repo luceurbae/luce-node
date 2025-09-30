@@ -3,20 +3,50 @@
     {
       "id": "testimonial-1",
       "description": "Avatar of a satisfied client",
-      "imageUrl": "https://picsum.photos/seed/101/100/100",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc1OTE2NzYwOXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person face"
     },
     {
       "id": "testimonial-2",
       "description": "Avatar of a happy customer",
-      "imageUrl": "https://picsum.photos/seed/102/100/100",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTkyMDk1OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person portrait"
     },
     {
       "id": "testimonial-3",
       "description": "Avatar of a tech lead",
-      "imageUrl": "https://picsum.photos/seed/103/100/100",
+      "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21hbiUyMHNtaWxpbmd8ZW58MHx8fHwxNzU5MTA5ODM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman smiling"
+    },
+    {
+      "id": "team-rama",
+      "description": "Portrait of Rama",
+      "imageUrl": "https://images.unsplash.com/photo-1746802423700-d85a98012dec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwaXhlbCUyMGFydCUyMHBlcnNvbnxlbnwwfHx8fDE3NTkyMjU1NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pixel art person"
+    },
+    {
+      "id": "team-dot",
+      "description": "Portrait of Dot",
+      "imageUrl": "https://images.unsplash.com/photo-1758899056905-3863af86cc49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxiZWFyJTIwY2FydG9vbnxlbnwwfHx8fDE3NTkyMjU1NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bear cartoon"
+    },
+    {
+      "id": "team-alif",
+      "description": "Portrait of Alif",
+      "imageUrl": "https://images.unsplash.com/photo-1630710478039-9c680b99f800?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhbmltZSUyMGNoYXJhY3RlcnxlbnwwfHx8fDE3NTkxNTQxMzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "anime character"
+    },
+    {
+      "id": "team-alvi",
+      "description": "Portrait of Alvi",
+      "imageUrl": "https://images.unsplash.com/photo-1700764979779-a0ee565e736c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YW5vbnltb3VzJTIwbWFza3xlbnwwfHx8fDE3NTkyMTc2NzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "anonymous mask"
+    },
+    {
+      "id": "team-aprame",
+      "description": "Portrait of Aprame",
+      "imageUrl": "https://images.unsplash.com/photo-1667449523770-f882f02e2f49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjbGF5JTIwY2hhcmFjdGVyfGVufDB8fHx8MTc1OTIyNTU0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "clay character"
     }
   ]
 }

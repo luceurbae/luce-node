@@ -9,6 +9,7 @@ import Logo from './logo';
 
 const navLinks = [
   { href: '#running-services', label: 'Running Services'},
+  { href: '#team', label: 'Team'},
   { href: '#contact', label: 'Contact' },
 ];
 
