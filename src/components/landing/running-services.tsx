@@ -39,6 +39,17 @@ export default function RunningServices() {
       );
     }
 
+    cards.forEach(card => {
+        if (card) {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, { y: -5, duration: 0.3, ease: 'power2.out' });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, { y: 0, duration: 0.3, ease: 'power2.out' });
+            });
+        }
+    });
+
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
@@ -62,7 +73,7 @@ export default function RunningServices() {
               ref={el => cardsRef.current[index] = el}
               style={{ opacity: 0 }} // Start with opacity 0 for GSAP animation
             >
-              <Card className="flex flex-col h-full transform hover:-translate-y-1 transition-transform duration-300">
+              <Card className="flex flex-col h-full">
                 <CardHeader>
                   <CardTitle className="font-headline">{service.title}</CardTitle>
                 </CardHeader>
