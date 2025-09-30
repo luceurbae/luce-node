@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from 'react';
@@ -22,13 +23,12 @@ export default function RunningServices() {
     if (section) {
       gsap.fromTo(
         cards,
-        { opacity: 0, y: 50, scale: 0.95 },
+        { opacity: 0, x: -100 },
         {
           opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.1,
+          x: 0,
+          duration: 0.8,
+          stagger: 0.2,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: section,
