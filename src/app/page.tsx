@@ -3,7 +3,7 @@ import Footer from '@/components/common/footer';
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 import Hero from '@/components/landing/hero-dynamic';
-import { getServices } from '@/lib/notion';
+import runningServicesData from '@/lib/running-services.json';
 import type { Service } from '@/components/landing/running-services';
 
 const RunningServices = dynamic(() => import('@/components/landing/running-services'), {
@@ -21,7 +21,7 @@ const ContactForm = dynamic(() => import('@/components/landing/contact-form'), {
 
 export default async function Home() {
 
-  const services: Service[] = await getServices();
+  const services: Service[] = runningServicesData.services;
 
   return (
     <div className="flex flex-col min-h-screen">

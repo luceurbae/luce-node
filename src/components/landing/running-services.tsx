@@ -4,7 +4,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -77,8 +77,7 @@ export default function RunningServices({ services }: RunningServicesProps) {
         </div>
         {services.length === 0 ? (
           <div className="text-center text-muted-foreground">
-            <p>Could not load services from Notion.</p>
-            <p>Please ensure your Notion API Key and Database ID are correct and the integration has access to the database.</p>
+            <p>No services are currently configured.</p>
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
